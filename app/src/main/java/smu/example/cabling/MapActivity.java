@@ -1,6 +1,10 @@
 package smu.example.cabling;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -12,6 +16,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class MapActivity extends AppCompatActivity {
 
     private static final String TAG = "map";
@@ -20,6 +27,7 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        getHashKey();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
@@ -41,5 +49,26 @@ public class MapActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+    }
+
+    private void getHashKey(){
+        PackageInfo packageInfo = null;
+        try{
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+        } catch(PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        }
+        if(packageInfo == null)
+            Log.e("HashKey", "HashKey:null");
+        for(Signature signature : packageInfo.signatures){
+            try{
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("HashKey", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            } catch (NoSuchAlgorithmException e){
+                Log.e("HashKey", "HashKey Error.signature=" + signature, e);
+            }
+        }
+
     }
 }
