@@ -1,11 +1,14 @@
 package smu.example.cabling;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +24,23 @@ import java.security.NoSuchAlgorithmException;
 
 public class MapActivity extends AppCompatActivity {
 
-    private static final String TAG = "map";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        Button Btnapp = (Button)findViewById(R.id.appoint);
+        Btnapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapActivity.this, AppointmentActivity.class);
+                startActivity(intent);
+            }
+        });
         getHashKey();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World!");
@@ -48,7 +59,7 @@ public class MapActivity extends AppCompatActivity {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
-        });
+        });*/
     }
     private void getHashKey(){
         PackageInfo packageInfo = null;
