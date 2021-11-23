@@ -21,8 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 public class AppointmentActivity extends AppCompatActivity {
     private static final String TAG = "map";
     private DatabaseReference mDatabase;
-    Button seat0, seat1, seat2, seat3;
-    String result;
+    Button seat[];
+    String result = "";
+    int i;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,57 +31,18 @@ public class AppointmentActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        seat0 = (Button)findViewById(R.id.seat0);
-        seat1 = (Button)findViewById(R.id.seat1);
-        seat2 = (Button)findViewById(R.id.seat2);
-        seat3 = (Button)findViewById(R.id.seat3);
+        seat = new Button[10];
+        int[] seatID = {
+                R.id.seat0, R.id.seat1, R.id.seat2,
+                R.id.seat3, R.id.seat4, R.id.seat5,
+                R.id.seat6, R.id.seat7, R.id.seat8,
+                R.id.seat9
+        };
 
-        seat0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDatabase.child("CAFE").child("cafe1").child("seat").child("0").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (!task.isSuccessful()) {
-                            Log.e("firebase", "Error getting data", task.getException());
-                        }
-                        else {
-                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                            if(String.valueOf(task.getResult().getValue()) == "1"){
-                                result = "이미 선택된 좌석입니다.";
-                            }else{
-                                result = "예약이 가능한 좌석입니다.";
-                            }
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-            }
-        });
-
-        seat2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDatabase.child("CAFE").child("cafe1").child("seat").child("2").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (!task.isSuccessful()) {
-                            Log.e("firebase", "Error getting data", task.getException());
-                        }
-                        else {
-                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                            if(String.valueOf(task.getResult().getValue()) == "1"){
-                                result = "이미 선택된 좌석입니다.";
-                            }else{
-                                result = "예약이 가능한 좌석입니다.";
-                            }
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-            }
-        });
-
+        for (i = 0; i < 10; i++) {
+            this.seat[i] = (Button) findViewById(seatID[i]);
+            this.seat[i].setOnClickListener(new btnSeatListener(1, i));
+        }
     }
 
     /*
@@ -104,5 +66,40 @@ public class AppointmentActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });*/
+    public class btnSeatListener implements View.OnClickListener {
+        protected int num1;
+        protected int num2;
+        String cafe = "cafe";
 
+        public btnSeatListener (int num1, int num2) {
+            this.num1 = num1;
+            this.num2 = num2;
+        }
+
+        public void onClick(View v){
+            mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (!task.isSuccessful()) {
+                        Log.e("firebase", "Error getting data", task.getException());
+                    }
+                    else {
+                        Log.d("firebase", String.valueOf(task.getResult().getValue()));
+
+                        if(String.valueOf(task.getResult().getValue()).equals("1")){
+                            result = "이미 선택된 좌석입니다.";
+                        }else{
+                            result = "예약이 가능한 좌석입니다.";
+                        }
+                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    };
 }
+
+
+
+
+

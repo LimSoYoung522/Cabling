@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getHashKey();
 
-
-
-
         loginButton = findViewById(R.id.loginbutton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
