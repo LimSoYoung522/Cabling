@@ -1,27 +1,17 @@
 package smu.example.cabling;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+public class AppointmentActivity extends AppCompatActivity {
 
-public class MapActivity extends AppCompatActivity {
-
-    private static final String TAG = "map";
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        setContentView(R.layout.activity_appoint);
+    }
+    /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World!");
@@ -40,6 +30,5 @@ public class MapActivity extends AppCompatActivity {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
-        });
-    }
+        });*/
 }
