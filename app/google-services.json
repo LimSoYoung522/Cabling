@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467240450573",
+    "project_id": "cabling-hjwlsy",
+    "storage_bucket": "cabling-hjwlsy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467240450573:android:c429c35b9fc570d85bb344",
+        "android_client_info": {
+          "package_name": "smu.example.cabling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467240450573-2antle0q5tlkk1qdjesqekg1ar5dalgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-vqfEdAUt1CNWHjfaxjXO5Se25sLv6_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467240450573-2antle0q5tlkk1qdjesqekg1ar5dalgh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
