@@ -1,5 +1,6 @@
 package smu.example.cabling;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +25,7 @@ import static java.text.DateFormat.getDateTimeInstance;
 
 public class CompleteActivity extends AppCompatActivity {
     TextView timeout;
-    Button extend, sit;
+    Button extend, sit, home;
     int seatnum, cafenum;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class CompleteActivity extends AppCompatActivity {
         timeout = (TextView)findViewById(R.id.timeout);
         extend = (Button)findViewById(R.id.btnextend);
         sit = (Button)findViewById(R.id.btnsit);
+        home = (Button)findViewById(R.id.home);
 
         sit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,16 @@ public class CompleteActivity extends AppCompatActivity {
 
         //timeout.setText(getDateTimeInstance().format(new Date()));
         showtimemethod();
+        home.setBackground(ContextCompat.getDrawable(this, R.drawable.home));
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CompleteActivity.this, Map2Activity.class);
+                Toast.makeText(getApplicationContext(), "메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
+
         }
 
     public void showtimemethod(){

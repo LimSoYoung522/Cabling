@@ -61,7 +61,7 @@ public class AppointmentActivity extends AppCompatActivity {
         for (i = 0; i < 10; i++) {
             seat[i] = (Button) findViewById(seatID[i]);
             seat[i].setOnClickListener(new btnSeatListener(num1, i));
-            seat[i].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_o));
+            seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_o));
 
             /*
             mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {

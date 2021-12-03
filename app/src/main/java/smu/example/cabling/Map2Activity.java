@@ -65,7 +65,7 @@ public class Map2Activity extends AppCompatActivity implements OnMapReadyCallbac
 
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(Map2Activity.this);
                                                     builder.setTitle("CAFE1 확인 창");
-                                                    builder.setMessage("선택하신 CAFE1로 예매 진행하시겠습니까 ?\n현재 위치로부터 1km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");
+                                                    builder.setMessage("선택하신 CAFE1로 예약 진행하시겠습니까 ?\n현재 위치로부터 1km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");
                                                     builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialog, int which) {
@@ -97,7 +97,7 @@ public class Map2Activity extends AppCompatActivity implements OnMapReadyCallbac
 
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(Map2Activity.this);
                                                     builder.setTitle("CAFE2 확인 창");
-                                                    builder.setMessage("선택하신 CAFE2로 예매 진행하시겠습니까 ?\n현재 위치로부터 3km 떨어져있습니다.\n대표 메뉴는 말차라떼입니다.");
+                                                    builder.setMessage("선택하신 CAFE2로 예약 진행하시겠습니까 ?\n현재 위치로부터 3km 떨어져있습니다.\n대표 메뉴는 말차라떼입니다.");
                                                     builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialog, int which) {
@@ -128,7 +128,7 @@ public class Map2Activity extends AppCompatActivity implements OnMapReadyCallbac
 
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(Map2Activity.this);
                                                     builder.setTitle("CAFE3 확인 창");
-                                                    builder.setMessage("선택하신 CAFE3로 예매 진행하시겠습니까 ?\n현재 위치로부터 5km 떨어져있습니다.\n대표 메뉴는 아메리카노입니다.");
+                                                    builder.setMessage("선택하신 CAFE3로 예약 진행하시겠습니까 ?\n현재 위치로부터 5km 떨어져있습니다.\n대표 메뉴는 아메리카노입니다.");
                                                     builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialog, int which) {

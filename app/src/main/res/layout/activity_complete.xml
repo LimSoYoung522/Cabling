@@ -6,13 +6,51 @@
     android:orientation="vertical"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:id="@+id/home"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="홈으로 이동"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="8"
+        android:layout_gravity="center"
+        android:gravity="center">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:text="예약이 완료되었습니다."/>
+        android:text="예약이 완료되었습니다."
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -34,5 +72,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/btnsit"
         android:text="착석 시, 버튼을 눌려주세요."/>
+
+    </LinearLayout>
 
 </LinearLayout>
