@@ -1,5 +1,6 @@
 package smu.example.cabling;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -44,55 +45,59 @@ public class AppointmentActivity extends AppCompatActivity {
         Intent receive = getIntent();
         num1 = receive.getIntExtra("cafe_num", 0);
 
-        if(num1 == 1){
+        if (num1 == 1) {
             setContentView(R.layout.activity_appoint1);
             setTitle("CAFE 1 예약화면");
-        }else if(num1 == 2){
+        } else if (num1 == 2) {
             setContentView(R.layout.activity_appoint2);
             setTitle("CAFE 2 예약화면");
-        }else if(num1 == 3){
+        } else if (num1 == 3) {
             setContentView(R.layout.activity_appoint3);
             setTitle("CAFE 3 예약화면");
         }
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         mContext = getApplicationContext();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         for (i = 0; i < 10; i++) {
             seat[i] = (Button) findViewById(seatID[i]);
             seat[i].setOnClickListener(new btnSeatListener(num1, i));
             seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_o));
 
-            /*
             mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     if (!task.isSuccessful()) {
                         Log.e("firebase", "Error getting data", task.getException());
-                    }
-                    else {
+                    } else {
                         Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                        if(String.valueOf(task.getResult().getValue()).equals("1")){
+                        if (String.valueOf(task.getResult().getValue()).equals("1")) {
                             Log.d("flag1", "1");
-                            flag = 1;
-                        }else{
+                            //setbg(1, num2);
+                            //flag = 1;
+                        } else {
                             Log.d("flag1", "0");
-                            flag = 0;
+                            //setbg(0, num2);
+                            //flag = 0;
                         }
                     }
                 }
             });
 
-            if(flag == 1){
-                Log.d("flag2", "1");
-                seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_x));
-            }
-            else {
-                Log.d("flag2", "0");
-                seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_o));
-            }*/
         }
+
     }
+
+    /*public void setbg(int flag, int i){
+        if (flag == 1) {
+            Log.d("flag2", "1");
+            //seat[i].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_x));
+        } else {
+            Log.d("flag2", "0");
+            //seat[i].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_o));
+        }
+    }*/
+
 
     public class btnSeatListener implements View.OnClickListener {
         protected int num1;
@@ -122,7 +127,7 @@ public class AppointmentActivity extends AppCompatActivity {
 
                             builder.setTitle("좌석 예약").setMessage("선택하신 좌석은 " + num2 + "번 입니다. \n예약하시겠습니까?");
 
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                            builder.setPositiveButton("예", new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface dialog, int id){
                                     Toast.makeText(getApplicationContext(), "결제 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
@@ -135,7 +140,7 @@ public class AppointmentActivity extends AppCompatActivity {
                                 }
                             });
 
-                            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                            builder.setNegativeButton("아니오", new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface dialog, int id){
                                     Toast.makeText(getApplicationContext(), "취소하였습니다.", Toast.LENGTH_SHORT).show();
