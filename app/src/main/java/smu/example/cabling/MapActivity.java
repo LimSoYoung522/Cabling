@@ -38,7 +38,7 @@ public class MapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        getHashKey();
+
 
         /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
@@ -61,24 +61,8 @@ public class MapActivity extends AppCompatActivity {
             }
         });*/
     }
-    private void getHashKey(){
-        PackageInfo packageInfo = null;
-        try{
-            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-        } catch(PackageManager.NameNotFoundException e){
-            e.printStackTrace();
-        }
-        if(packageInfo == null)
-            Log.e("HashKey", "HashKey:null");
-        for(Signature signature : packageInfo.signatures){
-            try{
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("HashKey", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            } catch (NoSuchAlgorithmException e){
-                Log.e("HashKey", "HashKey Error.signature=" + signature, e);
-            }
+
         }
 
-    }
-}
+
+
