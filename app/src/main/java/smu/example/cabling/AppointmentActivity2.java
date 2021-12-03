@@ -15,12 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class AppointmentActivity extends AppCompatActivity {
+public class AppointmentActivity2 extends AppCompatActivity {
     private static final String TAG = "map";
     private DatabaseReference mDatabase;
     Button seat[];
@@ -29,7 +27,7 @@ public class AppointmentActivity extends AppCompatActivity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appoint);
+        setContentView(R.layout.activity_appoint2);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -93,7 +91,7 @@ public class AppointmentActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                         }else{
                             //result = "예약이 가능한 좌석입니다.";
-                            AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentActivity.this);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentActivity2.this);
 
                             builder.setTitle("좌석 예약").setMessage("선택하신 좌석은 @입니다. 예약하시겠습니까?");
 
