@@ -20,21 +20,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="마커1" />
+            android:text="CAFE1" />
 
         <Button
             android:id="@+id/btnmark2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="마커2" />
+            android:text="CAFE2" />
 
         <Button
             android:id="@+id/btnmark3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="마커3" />
+            android:text="CAFE3" />
     </LinearLayout>
 
     <com.naver.maps.map.MapView

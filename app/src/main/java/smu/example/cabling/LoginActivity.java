@@ -47,11 +47,13 @@ public class LoginActivity extends AppCompatActivity  {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, AppointmentActivity1.class);
+                Intent intent = new Intent(LoginActivity.this, Map2Activity.class);
                 startActivity(intent);
             }
         });
     }
+
+    /*
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -98,7 +100,7 @@ public class LoginActivity extends AppCompatActivity  {
             startActivity(intent);
             finish();
         }
-    }
+    }*/
 
 
 }
