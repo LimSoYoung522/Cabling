@@ -32,37 +32,37 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seat3"
+        android:text="seat4"
         android:id="@+id/seat4"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seat3"
+        android:text="seat5"
         android:id="@+id/seat5"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seat3"
+        android:text="seat6"
         android:id="@+id/seat6"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seat3"
+        android:text="seat7"
         android:id="@+id/seat7"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seat3"
+        android:text="seat8"
         android:id="@+id/seat8"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seat3"
+        android:text="seat9"
         android:id="@+id/seat9"/>
 
 

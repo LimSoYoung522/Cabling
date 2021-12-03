@@ -1,5 +1,6 @@
 package smu.example.cabling;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -88,10 +90,34 @@ public class AppointmentActivity extends AppCompatActivity {
 
                         if(String.valueOf(task.getResult().getValue()).equals("1")){
                             result = "이미 선택된 좌석입니다.";
+                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                         }else{
-                            result = "예약이 가능한 좌석입니다.";
+                            //result = "예약이 가능한 좌석입니다.";
+                            AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentActivity.this);
+
+                            builder.setTitle("좌석 예약").setMessage("선택하신 좌석은 @입니다. 예약하시겠습니까?");
+
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface dialog, int id){
+                                    Toast.makeText(getApplicationContext(), "결제 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                                    // 결제 화면 액티비티 및 예약 완료 창 만들기
+                                    mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
+                                }
+                            });
+
+                            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface dialog, int id){
+                                    Toast.makeText(getApplicationContext(), "취소하였습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+
                         }
-                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+
                     }
                 }
             });
