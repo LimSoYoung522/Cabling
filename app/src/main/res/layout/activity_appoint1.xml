@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat0"
+            android:id="@+id/seat0"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat1"
+            android:id="@+id/seat1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat2"
+            android:id="@+id/seat2"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minHeight="0dp"
+            android:text="seat3"
+            android:id="@+id/seat3"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat4"
+            android:id="@+id/seat4"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat5"
+            android:id="@+id/seat5"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat6"
+            android:id="@+id/seat6"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat7"
+            android:id="@+id/seat7"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat8"
+            android:id="@+id/seat8"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="seat9"
+            android:id="@+id/seat9"/>
+
+    </LinearLayout>
+
+</LinearLayout>
