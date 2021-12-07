@@ -37,8 +37,6 @@ public class Map2Activity extends AppCompatActivity implements OnMapReadyCallbac
     private Marker marker2 = new Marker();
     private Marker marker3 = new Marker();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

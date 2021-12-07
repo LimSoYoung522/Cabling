@@ -38,7 +38,7 @@ public class AppointmentActivity extends AppCompatActivity {
     String cafe = "cafe";
     protected int num1;
     protected int num2;
-    Context mContext = getApplicationContext();
+    Context mContext;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +56,14 @@ public class AppointmentActivity extends AppCompatActivity {
             setTitle("CAFE 3 예약화면");
         }
 
+        mContext = getApplicationContext();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         for (i = 0; i < 10; i++) {
             seat[i] = (Button) findViewById(seatID[i]);
             seat[i].setOnClickListener(new btnSeatListener(num1, i));
-            seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_x));
-            //setbg(i);
+            //seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_x));
+            setbg(i);
         }
 
         Button refresh = (Button)findViewById(R.id.refresh);
