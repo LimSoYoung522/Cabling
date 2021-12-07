@@ -37,16 +37,8 @@ import com.naver.maps.map.overlay.OverlayImage;
 public class Map2Activity extends AppCompatActivity implements OnMapReadyCallback  {
     private MapView mapView;
     private static NaverMap naverMap;
-    Button btnMark1;
-    Button btnMark2;
-    Button btnMark3;
 
 
-
-
-    private Marker marker1 = new Marker();
-    private Marker marker2 = new Marker();
-    private Marker marker3 = new Marker();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,102 +54,8 @@ public class Map2Activity extends AppCompatActivity implements OnMapReadyCallbac
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.INTERNET }, MODE_PRIVATE);
 
-        btnMark1 = (Button)findViewById(R.id.btnmark1);
-        btnMark2 = (Button)findViewById(R.id.btnmark2);
-        btnMark3 = (Button)findViewById(R.id.btnmark3);
 
 
-        btnMark1.setOnClickListener(new View.OnClickListener(){
-                                        @Override
-                                        public void onClick(View v) {
-                                            setMarker(marker1, 37.54554870789251, 126.966795744657, R.drawable.marker,0);
-                                            marker1.setOnClickListener(new Overlay.OnClickListener() {
-                                                @Override
-                                                public boolean onClick(@NonNull Overlay overlay) {
-
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(Map2Activity.this);
-                                                    builder.setTitle("CAFE1 확인 창");
-                                                    builder.setMessage("선택하신 CAFE1로 예약 진행하시겠습니까 ?\n현재 위치로부터 1km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");
-                                                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            Intent intent = new Intent(Map2Activity.this, AppointmentActivity.class);
-                                                            intent.putExtra("cafe_num", 1);
-                                                            startActivity(intent);
-                                                        }
-                                                    });
-                                                    builder.setNegativeButton("아니오", null);
-                                                    builder.create().show();
-                                                    return false;
-                                                }
-                                            });
-
-                                        }
-                                    }
-
-
-        );
-
-        btnMark2.setOnClickListener(new View.OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(View v) {
-                                            setMarker(marker1, 37.54505953924471, 126.96675736948202, R.drawable.marker,0);
-                                            marker1.setOnClickListener(new Overlay.OnClickListener() {
-                                                @Override
-                                                public boolean onClick(@NonNull Overlay overlay) {
-
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(Map2Activity.this);
-                                                    builder.setTitle("CAFE2 확인 창");
-                                                    builder.setMessage("선택하신 CAFE2로 예약 진행하시겠습니까 ?\n현재 위치로부터 3km 떨어져있습니다.\n대표 메뉴는 말차라떼입니다.");
-                                                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            Intent intent = new Intent(Map2Activity.this, AppointmentActivity.class);
-                                                            intent.putExtra("cafe_num", 2);
-                                                            startActivity(intent);
-                                                        }
-                                                    });
-                                                    builder.setNegativeButton("아니오", null);
-                                                    builder.create().show();
-                                                    return false;
-                                                }
-                                            });
-
-                                        }
-                                    }
-
-
-        );
-
-        btnMark3.setOnClickListener(new View.OnClickListener()  {
-                                        @Override
-                                        public void onClick(View v) {
-                                            setMarker(marker1, 37.545198290177346, 126.96604613699941, R.drawable.marker,0);
-                                            marker1.setOnClickListener(new Overlay.OnClickListener() {
-                                                @Override
-                                                public boolean onClick(@NonNull Overlay overlay) {
-
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(Map2Activity.this);
-                                                    builder.setTitle("CAFE3 확인 창");
-                                                    builder.setMessage("선택하신 CAFE3로 예약 진행하시겠습니까 ?\n현재 위치로부터 5km 떨어져있습니다.\n대표 메뉴는 아메리카노입니다.");
-                                                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            Intent intent = new Intent(Map2Activity.this, AppointmentActivity.class);
-                                                            intent.putExtra("cafe_num", 3);
-                                                            startActivity(intent);
-                                                        }
-                                                    });
-                                                    builder.setNegativeButton("아니오", null);
-                                                    builder.create().show();
-                                                    return false;
-                                                }
-                                            });
-
-                                        }
-                                    }
-        );
 
 
         mapView = (MapView) findViewById(R.id.map_view);
@@ -174,15 +72,26 @@ public class Map2Activity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(@NonNull NaverMap naverMap) {
         this.naverMap = naverMap;
 
-        //배경 지도 선택
-        // naverMap.setMapType(NaverMap.MapType.Satellite);
+       Marker marker1 = new Marker();
+        marker1.setPosition(new LatLng(37.54554870789251, 126.966795744657));
+        marker1.setMap(naverMap);
+
+        Marker marker2 = new Marker();
+        marker2.setPosition(new LatLng(37.54505953924471, 126.96675736948202));
+        marker2.setMap(naverMap);
+
+        Marker marker3 = new Marker();
+        marker3.setPosition(new LatLng(37.545198290177346, 126.96604613699941));
+        marker3.setMap(naverMap);
+
+
 
         //건물 표시
         naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
 
         CameraPosition cameraPosition = new CameraPosition(
                 new LatLng(37.545384781090256, 126.96696471339739),    //위치 지정
-                15                                        //줌 레벨
+                17                                      //줌 레벨
         );
         naverMap.setCameraPosition(cameraPosition);
 
