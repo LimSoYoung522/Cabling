@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="smu.example.cabling" >
+    package="smu.example.cabling">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -14,8 +14,14 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cabling"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".MainActivity" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".NavigationViewHelper"
+            android:exported="true" />
+        <activity
+            android:name=".DrawerActivity"
+            android:exported="true" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +32,7 @@
         <activity android:name=".AppointmentActivity" />
         <activity android:name=".Map2Activity" />
         <activity android:name=".CompleteActivity" />
+
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
