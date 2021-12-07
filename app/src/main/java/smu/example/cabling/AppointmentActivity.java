@@ -34,11 +34,11 @@ public class AppointmentActivity extends AppCompatActivity {
             R.id.seat9
     };
     String result = "";
-    int i, flag=1;
+    int i;
     String cafe = "cafe";
     protected int num1;
     protected int num2;
-    Context mContext;
+    Context mContext = getApplicationContext();
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,48 +56,45 @@ public class AppointmentActivity extends AppCompatActivity {
             setTitle("CAFE 3 예약화면");
         }
 
-        mContext = getApplicationContext();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         for (i = 0; i < 10; i++) {
             seat[i] = (Button) findViewById(seatID[i]);
             seat[i].setOnClickListener(new btnSeatListener(num1, i));
-            seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_o));
-
-            mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Log.e("firebase", "Error getting data", task.getException());
-                    } else {
-                        Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                        if (String.valueOf(task.getResult().getValue()).equals("1")) {
-                            Log.d("flag1", "1");
-                            //setbg(1, num2);
-                            //flag = 1;
-                        } else {
-                            Log.d("flag1", "0");
-                            //setbg(0, num2);
-                            //flag = 0;
-                        }
-                    }
-                }
-            });
-
+            seat[i].setBackground(ContextCompat.getDrawable(this, R.drawable.seat_x));
+            //setbg(i);
         }
+
+        Button refresh = (Button)findViewById(R.id.refresh);
+        refresh.setBackground(ContextCompat.getDrawable(this, R.drawable.refresh));
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(i = 0; i < 10; i++ ) setbg(i);
+            }
+        });
 
     }
 
-    /*public void setbg(int flag, int i){
-        if (flag == 1) {
-            Log.d("flag2", "1");
-            //seat[i].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_x));
-        } else {
-            Log.d("flag2", "0");
-            //seat[i].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_o));
-        }
-    }*/
-
+    public void setbg(int num){
+        mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                } else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    if (String.valueOf(task.getResult().getValue()).equals("1")) {
+                        Log.d("bgflag", "1");
+                        seat[num].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_x));
+                    } else {
+                        Log.d("bgflag", "0");
+                        seat[num].setBackground(ContextCompat.getDrawable(mContext, R.drawable.seat_o));
+                    }
+                }
+            }
+        });
+    }
 
     public class btnSeatListener implements View.OnClickListener {
         protected int num1;
