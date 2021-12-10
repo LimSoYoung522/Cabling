@@ -15,6 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cabling"
         android:usesCleartextTraffic="true">
+
+
         <activity
             android:name=".NavigationViewHelper"
             android:exported="true" />
@@ -28,10 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UserActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".AppointmentActivity" />
         <activity android:name=".CompleteActivity" />
-
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
