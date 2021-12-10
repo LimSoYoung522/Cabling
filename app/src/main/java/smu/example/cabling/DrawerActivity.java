@@ -69,6 +69,7 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         this.naverMap = naverMap;
 
         Marker marker1 = new Marker();
+        marker1.setIcon(OverlayImage.fromResource(R.drawable.marker));
         marker1.setPosition(new LatLng(37.54554870789251, 126.966795744657));
         marker1.setMap(naverMap);
         marker1.setOnClickListener(new Overlay.OnClickListener() {
@@ -93,6 +94,7 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         });
 
         Marker marker2 = new Marker();
+        marker2.setIcon(OverlayImage.fromResource(R.drawable.marker));
         marker2.setPosition(new LatLng(37.54505953924471, 126.96675736948202));
         marker2.setMap(naverMap);
         marker2.setOnClickListener(new Overlay.OnClickListener() {
@@ -117,6 +119,7 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         });
 
         Marker marker3 = new Marker();
+        marker3.setIcon(OverlayImage.fromResource(R.drawable.marker));
         marker3.setPosition(new LatLng(37.545198290177346, 126.96604613699941));
         marker3.setMap(naverMap);
         marker3.setOnClickListener(new Overlay.OnClickListener() {
