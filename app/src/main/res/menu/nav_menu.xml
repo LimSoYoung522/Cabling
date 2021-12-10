@@ -4,10 +4,8 @@
     <group android:checkableBehavior="single"/>
     <item
         android:id="@+id/menu1"
-        android:title="Map"/>
-    <item
-        android:id="@+id/menu2"
         android:title="User_Info"/>
+
 
 
 </menu>

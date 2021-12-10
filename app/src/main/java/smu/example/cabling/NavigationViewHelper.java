@@ -16,10 +16,6 @@ public class NavigationViewHelper {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.menu1){
-                    Intent intent=new Intent(context, Map2Activity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    context.startActivity(intent);
-                }else if(item.getItemId()==R.id.menu2){
                     Intent intent=new Intent(context, UserActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     context.startActivity(intent);
