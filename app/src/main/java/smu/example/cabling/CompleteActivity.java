@@ -45,7 +45,7 @@ public class CompleteActivity extends AppCompatActivity {
         sit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CompleteActivity.this, Map2Activity.class);
+                Intent intent = new Intent(CompleteActivity.this, DrawerActivity.class);
                 Toast.makeText(getApplicationContext(), "메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
@@ -57,7 +57,7 @@ public class CompleteActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CompleteActivity.this, Map2Activity.class);
+                Intent intent = new Intent(CompleteActivity.this, DrawerActivity.class);
                 Toast.makeText(getApplicationContext(), "메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }

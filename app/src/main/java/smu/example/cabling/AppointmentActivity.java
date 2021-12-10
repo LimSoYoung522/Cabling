@@ -128,13 +128,21 @@ public class AppointmentActivity extends AppCompatActivity {
                             builder.setPositiveButton("예", new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface dialog, int id){
-                                    Toast.makeText(getApplicationContext(), "결제 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
-                                    // 결제 화면 액티비티 및 예약 완료 창 만들기
-                                    mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
-                                    Intent complete = new Intent(AppointmentActivity.this, CompleteActivity.class);
-                                    complete.putExtra("cafe_num", num1);
-                                    complete.putExtra("seat_num", num2);
-                                    startActivity(complete);
+
+                                    int point = ((UserActivity)UserActivity.context_user).point;
+                                    if(point >= 100){
+                                        Toast.makeText(getApplicationContext(), "결제 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                                        // 결제 화면 액티비티 및 예약 완료 창 만들기
+                                        mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
+                                        Intent complete = new Intent(AppointmentActivity.this, CompleteActivity.class);
+                                        complete.putExtra("cafe_num", num1);
+                                        complete.putExtra("seat_num", num2);
+                                        startActivity(complete);
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "포인트가 부족해 좌석을 예약할 수 없습니다. 충전해주세요.", Toast.LENGTH_SHORT).show();
+                                        Intent fail = new Intent(AppointmentActivity.this, UserActivity.class);
+                                        startActivity(fail);
+                                    }
                                 }
                             });
 
