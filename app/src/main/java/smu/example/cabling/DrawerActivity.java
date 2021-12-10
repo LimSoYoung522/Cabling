@@ -33,8 +33,6 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
     private MapView mapView;
     private static NaverMap naverMap;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +45,9 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.INTERNET }, MODE_PRIVATE);
 
-
-
-
-
         mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-
-
 
         init();
         NavigationViewHelper.enableNavigation(mContext, nav);
@@ -72,78 +64,19 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         marker1.setIcon(OverlayImage.fromResource(R.drawable.marker));
         marker1.setPosition(new LatLng(37.54554870789251, 126.966795744657));
         marker1.setMap(naverMap);
-        marker1.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(DrawerActivity.this);
-                builder.setTitle("CAFE1 확인 창");
-                builder.setMessage("선택하신 CAFE1로 예약 진행하시겠습니까 ?\n현재 위치로부터 1km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");
-                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(DrawerActivity.this, AppointmentActivity.class);
-                        intent.putExtra("cafe_num", 1);
-                        startActivity(intent);
-                    }
-                });
-                builder.setNegativeButton("아니오", null);
-                builder.create().show();
-                return false;
-            }
-        });
+        marker1.setOnClickListener(new mapClickListener(1));
 
         Marker marker2 = new Marker();
         marker2.setIcon(OverlayImage.fromResource(R.drawable.marker));
         marker2.setPosition(new LatLng(37.54505953924471, 126.96675736948202));
         marker2.setMap(naverMap);
-        marker2.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(DrawerActivity.this);
-                builder.setTitle("CAFE2 확인 창");
-                builder.setMessage("선택하신 CAFE2로 예약 진행하시겠습니까 ?\n현재 위치로부터 3km 떨어져있습니다.\n대표 메뉴는 아메리카노입니다.");
-                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(DrawerActivity.this, AppointmentActivity.class);
-                        intent.putExtra("cafe_num", 2);
-                        startActivity(intent);
-                    }
-                });
-                builder.setNegativeButton("아니오", null);
-                builder.create().show();
-                return false;
-            }
-        });
+        marker2.setOnClickListener(new mapClickListener(2));
 
         Marker marker3 = new Marker();
         marker3.setIcon(OverlayImage.fromResource(R.drawable.marker));
         marker3.setPosition(new LatLng(37.545198290177346, 126.96604613699941));
         marker3.setMap(naverMap);
-        marker3.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(DrawerActivity.this);
-                builder.setTitle("CAFE3 확인 창");
-                builder.setMessage("선택하신 CAFE3로 예약 진행하시겠습니까 ?\n현재 위치로부터 5km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");
-                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(DrawerActivity.this, AppointmentActivity.class);
-                        intent.putExtra("cafe_num", 3);
-                        startActivity(intent);
-                    }
-                });
-                builder.setNegativeButton("아니오", null);
-                builder.create().show();
-                return false;
-            }
-        });
-
-
+        marker3.setOnClickListener(new mapClickListener(3));
 
         //건물 표시
         naverMap.setLayerGroupEnabled(naverMap.LAYER_GROUP_BUILDING, true);
@@ -156,6 +89,36 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
 
     }
 
+    public class mapClickListener implements Overlay.OnClickListener {
+        protected int num1;
+
+        public mapClickListener(int num1) {
+            this.num1 = num1;
+        }
+
+        public boolean onClick(@NonNull Overlay overlay) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(DrawerActivity.this);
+            builder.setTitle("CAFE" + num1 + " 확인 창");
+            if(num1 == 1){
+                builder.setMessage("선택하신 CAFE " + num1 + "로 예약 진행하시겠습니까 ?\n현재 위치로부터 1km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");
+            }else if(num1 == 2){
+                builder.setMessage("선택하신 CAFE " + num1 + "로 예약 진행하시겠습니까 ?\n현재 위치로부터 3km 떨어져있습니다.\n대표 메뉴는 말차라떼입니다.");
+            }else if(num1 == 3){
+                builder.setMessage("선택하신 CAFE " + num1 + "로 예약 진행하시겠습니까 ?\n현재 위치로부터 5km 떨어져있습니다.\n대표 메뉴는 아메리카노입니다.");
+            }
+            builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(DrawerActivity.this, AppointmentActivity.class);
+                    intent.putExtra("cafe_num", num1);
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("아니오", null);
+            builder.create().show();
+            return false;
+        }
+    }
     private void setMarker(Marker marker, double lat, double lng, int resourceID, int zIndex) {
         //원근감 표시
         marker.setIconPerspectiveEnabled(true);

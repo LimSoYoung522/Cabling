@@ -30,7 +30,6 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".AppointmentActivity" />
-        <activity android:name=".Map2Activity" />
         <activity android:name=".CompleteActivity" />
 
 
