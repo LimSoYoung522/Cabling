@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton loginButton;
+    ImageButton loginButton, registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
+            }
+        });
 
+        registerButton = findViewById(R.id.registerbutton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 

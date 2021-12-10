@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import static smu.example.cabling.UserActivity.point;
 
 public class AppointmentActivity extends AppCompatActivity {
     private static final String TAG = "map";
@@ -128,11 +128,9 @@ public class AppointmentActivity extends AppCompatActivity {
                             builder.setPositiveButton("예", new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface dialog, int id){
-
-                                    int point = ((UserActivity)UserActivity.context_user).point;
                                     if(point >= 100){
-                                        Toast.makeText(getApplicationContext(), "결제 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
-                                        // 결제 화면 액티비티 및 예약 완료 창 만들기
+                                        point -= 100;
+                                        Toast.makeText(getApplicationContext(), "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT).show();
                                         mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
                                         Intent complete = new Intent(AppointmentActivity.this, CompleteActivity.class);
                                         complete.putExtra("cafe_num", num1);

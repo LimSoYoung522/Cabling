@@ -11,11 +11,19 @@
     android:gravity="center">
 
     <EditText
+        android:layout_width="800px"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_name"
+        android:inputType="text"
+        android:hint="이름을 입력하세요"
+        />
+
+    <EditText
         android:id="@+id/edit_id"
         android:layout_width="800px"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="아이디를 입력하세요"
+        android:hint="이메일을 입력하세요"
         />
 
     <EditText
@@ -27,12 +35,13 @@
         />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Login"
+        android:text="Register"
         android:textStyle="bold"
          />
+
 
 </LinearLayout>

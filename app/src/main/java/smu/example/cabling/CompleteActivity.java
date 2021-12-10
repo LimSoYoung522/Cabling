@@ -1,7 +1,5 @@
 package smu.example.cabling;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,8 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import static java.text.DateFormat.getDateTimeInstance;
+import static smu.example.cabling.UserActivity.point;
 
 public class CompleteActivity extends AppCompatActivity {
     TextView timeout;
@@ -81,11 +78,16 @@ public class CompleteActivity extends AppCompatActivity {
                     timeout.setText(Integer.toString(time) + "초 안에 자리에 착석해주세요.");
                     time--;
 
-                    extend.setText("시간 연장하기");
+                    extend.setText("시간 연장을 위해 100포인트 사용하기");
                     extend.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            time += 10;
+                            if(point >= 100){
+                                point -= 100;
+                                Toast.makeText(getApplicationContext(), "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT).show();
+                                time += 10;
+                            }
+
                         }
                     });
                     sit.setText("착석 시, 버튼을 눌러주세요.");

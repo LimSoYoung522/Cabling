@@ -25,10 +25,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border"
@@ -47,8 +47,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:textSize="20dp"
-                android:text="Username" />
+                android:textSize="20dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,17 +55,16 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:paddingEnd="10dp"
+            android:layout_margin="10dp">
 
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-
+                android:id="@+id/tvpoint"
                 android:gravity="center_horizontal"
-                android:text="@@님이 보유하신 포인트는 @@point 입니다"
-                android:textSize="40dp"/>
+                android:textSize="30dp"/>
 
         </LinearLayout>
 
@@ -75,13 +73,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:paddingEnd="10dp"
+            android:layout_margin="10dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="47dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:textColor="#036635"
                 android:text="충전하고 싶은 포인트 "
                 android:textSize="15dp" />
@@ -90,21 +91,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/radioGroup_gender"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/radio_male"
+                android:id="@+id/rgpoint"
+                android:orientation="horizontal"
+                >
+                <RadioButton android:id="@+id/p1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="#036635"
                     android:text="100" />
-                <RadioButton android:id="@+id/radio_female"
+                <RadioButton android:id="@+id/p2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#036635"
                     android:layout_weight="1"
                     android:text="500" />
-                <RadioButton android:id="@+id/radio_unspecified"
+                <RadioButton android:id="@+id/p3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#036635"
