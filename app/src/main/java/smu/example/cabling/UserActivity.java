@@ -46,7 +46,7 @@ public class UserActivity extends AppCompatActivity {
         p2 = (RadioButton) findViewById(R.id.p2);
         p3 = (RadioButton) findViewById(R.id.p3);
 
-        tvpoint.setText(username + "님이 보유하신 포인트는 " + Integer.toString(point) + "point 입니다.");
+        tvpoint.setText(username + "님이 보유하신 포인트는 \n" + Integer.toString(point) + "point 입니다.");
 
         btpoint.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +55,7 @@ public class UserActivity extends AppCompatActivity {
                 else if(p2.isChecked()) point += 500;
                 else if(p3.isChecked()) point += 1000;
 
-                tvpoint.setText(username + "님이 보유하신 포인트는 " + Integer.toString(point) + "point 입니다.");
+                tvpoint.setText(username + "님이 보유하신 포인트는 \n" + Integer.toString(point) + "point 입니다.");
             }
         });
     }
