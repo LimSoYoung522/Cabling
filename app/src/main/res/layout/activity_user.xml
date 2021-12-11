@@ -23,6 +23,17 @@
                 android:src="@drawable/userbg"
                 android:scaleType="fitXY"/>
 
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home"
+                android:background="@android:color/transparent"
+
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"/>
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
                 android:layout_width="250dp"
@@ -34,7 +45,6 @@
                 app:civ_border_overlay="true"
                 app:civ_border_width="5dp"
                 app:civ_border_color="#036635"
-                android:src="@drawable/user"
                 />
         </FrameLayout>
 
@@ -51,6 +61,7 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
 
             android:textColor="@color/black"
             android:textSize="25dp"
@@ -134,17 +145,6 @@
 
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/point_up"
-                android:background="@android:color/transparent"
-
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"/>
-
-            <ImageButton
-                android:id="@+id/Home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/home"
                 android:background="@android:color/transparent"
 
                 android:layout_gravity="center"

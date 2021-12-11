@@ -42,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
         anim_ball=AnimationUtils.loadAnimation(this,R.anim.anim_splash_ball);
         anim_scale=AnimationUtils.loadAnimation(this,R.anim.anim_splash_scale);
 
-
         logo.startAnimation(anim_ball);
-        letter.startAnimation(anim_scale);
+        letter.startAnimation(anim_FadeIn);
 
         loginButton = findViewById(R.id.startbutton);
         loginButton.setOnClickListener(new View.OnClickListener() {

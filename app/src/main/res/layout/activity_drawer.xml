@@ -7,18 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".DrawerActivity">
 
-
-
-
     <com.naver.maps.map.MapView
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
-
-
-
-
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav"
@@ -26,8 +19,6 @@
         android:layout_height="match_parent"
         app:menu="@menu/nav_menu"
         android:layout_gravity="start|left"/>
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

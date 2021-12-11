@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
-import static smu.example.cabling.UserActivity.point;
+import static smu.example.cabling.UserActivity.point1;
 
 public class CompleteActivity extends AppCompatActivity {
     TextView timeout;
@@ -47,7 +47,7 @@ public class CompleteActivity extends AppCompatActivity {
         sit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CompleteActivity.this, UserActivity.class);
+                Intent intent = new Intent(CompleteActivity.this, DrawerActivity.class);
                 StyleableToast.makeText(CompleteActivity.this, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 startActivity(intent);
                 finish();
@@ -60,7 +60,7 @@ public class CompleteActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CompleteActivity.this, UserActivity.class);
+                Intent intent = new Intent(CompleteActivity.this, DrawerActivity.class);
                 StyleableToast.makeText(CompleteActivity.this, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 startActivity(intent);
                 finish();
@@ -76,16 +76,16 @@ public class CompleteActivity extends AppCompatActivity {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 if(time >= 1){
-                    timeout.setText("예약시간이 " + Integer.toString(time) + "초 남았습니다.\n시간 내에 착석해주세요.");
+                    timeout.setText("착석 가능 시간이 " + Integer.toString(time) + "초 남았습니다.\n시간 내에 착석해주세요.");
                     time--;
 
                     extend.setText("시간 연장을 위해 100포인트 사용하기");
                     extend.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(point >= 100){
-                                point -= 100;
-                                StyleableToast.makeText(CompleteActivity.this, "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                            if(point1 >= 100){
+                                point1 -= 100;
+                                StyleableToast.makeText(CompleteActivity.this, "결제 후 " + Integer.toString(point1) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                 time += 10;
                             }
 
@@ -93,7 +93,7 @@ public class CompleteActivity extends AppCompatActivity {
                     });
                     sit.setText("착석 시, 버튼을 눌러주세요.");
                 }else{
-                    timeout.setText("지정된 시간 내에 착석하지 않아 예약이 취소되었습니다.\n 다시 예약해주세요.");
+                    timeout.setText("지정된 시간 내에 착석하지 않아\n 예약이 취소되었습니다.\n 다시 예약해주세요.");
                     extend.setText("예약 화면으로 돌아가기");
                     extend.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -116,6 +116,7 @@ public class CompleteActivity extends AppCompatActivity {
                             });
 
                             startActivity(intent);
+                            finish();
                         }
                     });
                     sit.setText("메인 화면으로 돌아가기");

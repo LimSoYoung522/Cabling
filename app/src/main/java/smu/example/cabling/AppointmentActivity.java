@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
-import static smu.example.cabling.UserActivity.point;
+import static smu.example.cabling.UserActivity.point1;
 
 public class AppointmentActivity extends AppCompatActivity {
     private static final String TAG = "map";
@@ -131,14 +131,15 @@ public class AppointmentActivity extends AppCompatActivity {
                             builder.setPositiveButton("예", new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface dialog, int id){
-                                    if(point >= 100){
-                                        point -= 100;
-                                        StyleableToast.makeText(AppointmentActivity.this, "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                                    if(point1 >= 100){
+                                        point1 -= 100;
+                                        StyleableToast.makeText(AppointmentActivity.this, "결제 후 " + Integer.toString(point1) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                         mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
                                         Intent complete = new Intent(AppointmentActivity.this, CompleteActivity.class);
                                         complete.putExtra("cafe_num", num1);
                                         complete.putExtra("seat_num", num2);
                                         startActivity(complete);
+                                        finish();
                                     }else{
                                         StyleableToast.makeText(AppointmentActivity.this, "포인트가 부족해 좌석을 예약할 수 없습니다. 충전해주세요.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                         Intent fail = new Intent(AppointmentActivity.this, UserActivity.class);

@@ -18,6 +18,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -52,6 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+
+                                    createUser(username, userid);
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -84,6 +91,27 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void createUser(String username, String useremail){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference newReference = reference.push();
+
+        User user = new User(username, useremail, 0, "https://firebasestorage.googleapis.com/v0/b/cabling-hjwlsy.appspot.com/o/profile_img%2Fuser.jpeg?alt=media&token=f01ac1c3-324a-46b5-8688-6ad760f49b39");
+
+        newReference.setValue(user);
+        newReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User value = dataSnapshot.getValue(User.class);
+                String newUserKey = newReference.getKey();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void onStart(){
