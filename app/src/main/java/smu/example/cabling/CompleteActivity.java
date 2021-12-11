@@ -7,6 +7,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +20,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import io.github.muddz.styleabletoast.StyleableToast;
+
 import static smu.example.cabling.UserActivity.point;
 
 public class CompleteActivity extends AppCompatActivity {
     TextView timeout;
-    Button extend, sit, home;
+    Button extend, sit;
+    ImageButton home;
     int seatnum, cafenum;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +42,13 @@ public class CompleteActivity extends AppCompatActivity {
         timeout = (TextView)findViewById(R.id.timeout);
         extend = (Button)findViewById(R.id.btnextend);
         sit = (Button)findViewById(R.id.btnsit);
-        home = (Button)findViewById(R.id.home);
+        home = (ImageButton)findViewById(R.id.home);
 
         sit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CompleteActivity.this, UserActivity.class);
-                Toast.makeText(getApplicationContext(), "메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(CompleteActivity.this, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 startActivity(intent);
                 finish();
             }
@@ -56,7 +61,7 @@ public class CompleteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CompleteActivity.this, UserActivity.class);
-                Toast.makeText(getApplicationContext(), "메인 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(CompleteActivity.this, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 startActivity(intent);
                 finish();
             }
@@ -65,19 +70,13 @@ public class CompleteActivity extends AppCompatActivity {
         }
 
     public void showtimemethod(){
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        //Date target = Calendar.getInstance().getTime();
-        //long ltarget = Long.parseLong(dateFormat.format(target)) + 30;
-
 
         final Handler handler = new Handler(){
             int time = 10;
             @Override
             public void handleMessage(@NonNull Message msg) {
-                //Date now = Calendar.getInstance().getTime();
-                //timeout.setText(Long.toString(ltarget - Long.parseLong(dateFormat.format(now))) + "초 안에 자리에 착석해주세요.");
                 if(time >= 1){
-                    timeout.setText(Integer.toString(time) + "초 안에 자리에 착석해주세요.");
+                    timeout.setText("예약시간이 " + Integer.toString(time) + "초 남았습니다.\n시간 내에 착석해주세요.");
                     time--;
 
                     extend.setText("시간 연장을 위해 100포인트 사용하기");
@@ -86,7 +85,7 @@ public class CompleteActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             if(point >= 100){
                                 point -= 100;
-                                Toast.makeText(getApplicationContext(), "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT).show();
+                                StyleableToast.makeText(CompleteActivity.this, "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                 time += 10;
                             }
 

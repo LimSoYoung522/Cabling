@@ -97,7 +97,8 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         }
 
         public boolean onClick(@NonNull Overlay overlay) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(DrawerActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(DrawerActivity.this, R.style.MyAlertDialogTheme);
+            builder.setIcon(R.drawable.logo_white);
             builder.setTitle("CAFE" + num1 + " 확인 창");
             if(num1 == 1){
                 builder.setMessage("선택하신 CAFE " + num1 + "로 예약 진행하시겠습니까 ?\n현재 위치로부터 1km 떨어져있습니다.\n대표 메뉴는 초코라떼입니다.");

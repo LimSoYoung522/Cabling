@@ -12,5 +12,31 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
+        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
+        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
+
+    </style>
+
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#5BA36B</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/logo_white</item>
+        <item name="stLength">LONG</item>
+        <item name="stRadius">15dp</item>
+    </style>
+
+    <style name="MyAlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:colorPrimary">#FFFFFF</item>
+        <item name="android:background">#036635</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">15sp</item>
     </style>
 </resources>

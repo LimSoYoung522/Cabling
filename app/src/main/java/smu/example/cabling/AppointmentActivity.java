@@ -21,6 +21,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import io.github.muddz.styleabletoast.StyleableToast;
+
 import static smu.example.cabling.UserActivity.point;
 
 public class AppointmentActivity extends AppCompatActivity {
@@ -118,11 +121,11 @@ public class AppointmentActivity extends AppCompatActivity {
                         Log.d("firebase", String.valueOf(task.getResult().getValue()));
                         if(String.valueOf(task.getResult().getValue()).equals("1")){
                             result = "이미 예약된 좌석입니다.";
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            StyleableToast.makeText(AppointmentActivity.this, result, Toast.LENGTH_SHORT, R.style.mytoast).show();
                         }else{
                             //result = "예약이 가능한 좌석입니다.";
-                            AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentActivity.this);
-
+                            AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentActivity.this, R.style.MyAlertDialogTheme);
+                            builder.setIcon(R.drawable.logo_white);
                             builder.setTitle("좌석 예약").setMessage("선택하신 좌석은 " + num2 + "번 입니다. \n예약하시겠습니까?");
 
                             builder.setPositiveButton("예", new DialogInterface.OnClickListener(){
@@ -130,14 +133,14 @@ public class AppointmentActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id){
                                     if(point >= 100){
                                         point -= 100;
-                                        Toast.makeText(getApplicationContext(), "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT).show();
+                                        StyleableToast.makeText(AppointmentActivity.this, "결제 후 " + Integer.toString(point) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                         mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
                                         Intent complete = new Intent(AppointmentActivity.this, CompleteActivity.class);
                                         complete.putExtra("cafe_num", num1);
                                         complete.putExtra("seat_num", num2);
                                         startActivity(complete);
                                     }else{
-                                        Toast.makeText(getApplicationContext(), "포인트가 부족해 좌석을 예약할 수 없습니다. 충전해주세요.", Toast.LENGTH_SHORT).show();
+                                        StyleableToast.makeText(AppointmentActivity.this, "포인트가 부족해 좌석을 예약할 수 없습니다. 충전해주세요.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                         Intent fail = new Intent(AppointmentActivity.this, UserActivity.class);
                                         startActivity(fail);
                                     }
@@ -147,7 +150,7 @@ public class AppointmentActivity extends AppCompatActivity {
                             builder.setNegativeButton("아니오", new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface dialog, int id){
-                                    Toast.makeText(getApplicationContext(), "취소하였습니다.", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(AppointmentActivity.this, "좌석 예약을 취소합니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                 }
                             });
 

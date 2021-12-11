@@ -2,12 +2,14 @@ package smu.example.cabling;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,11 +36,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class LoginActivity extends AppCompatActivity{
 
     public String userid, userpw;
 
-    Button btn_login, btn_regist;
+    ImageButton btn_login, btn_regist;
     EditText login_id;
     EditText login_pw;
     FirebaseAuth mAuth;
@@ -51,10 +55,16 @@ public class LoginActivity extends AppCompatActivity{
 
         mAuth = FirebaseAuth.getInstance();
 
+        Intent intent = getIntent();
+        String emailfromR = intent.getStringExtra("email");
+        String pwfromR = intent.getStringExtra("pw");
+
         login_id = (EditText)findViewById(R.id.edit_id);
         login_pw = (EditText)findViewById(R.id.edit_pw);
+        login_id.setText(emailfromR);
+        login_pw.setText(pwfromR);
 
-        btn_login = (Button)findViewById(R.id.btn_login);
+        btn_login = (ImageButton)findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,18 +76,25 @@ public class LoginActivity extends AppCompatActivity{
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+                                    StyleableToast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                     Intent intent = new Intent(LoginActivity.this, DrawerActivity.class);
                                     startActivity(intent);
                                 }else{
-                                    Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
-                                    Log.d("myuserid", userid);
-                                    Log.d("myuserpw", userpw);
+                                    StyleableToast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                 }
                             }
                         });
             }
         });
 
+        btn_regist = (ImageButton)findViewById(R.id.btn_register);
+        btn_regist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

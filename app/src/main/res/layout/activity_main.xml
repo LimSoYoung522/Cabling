@@ -27,25 +27,14 @@
         app:srcCompat="@drawable/logo_white" />
 
     <ImageButton
-        android:id="@+id/loginbutton"
+        android:id="@+id/startbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/login"
-        android:background="@android:color/transparent"/>
-
-    <ImageButton
-        android:id="@+id/registerbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/signup"
+        app:srcCompat="@drawable/start"
         android:background="@android:color/transparent"/>
 
 </LinearLayout>
