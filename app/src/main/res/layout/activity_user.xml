@@ -139,18 +139,23 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"/>
 
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home"
+                android:background="@android:color/transparent"
+
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
+
         </LinearLayout>
 
 
 
 
     </LinearLayout>
-
-
-    
-
-
-
 
 
 

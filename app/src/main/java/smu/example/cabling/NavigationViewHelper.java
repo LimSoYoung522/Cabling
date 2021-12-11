@@ -15,10 +15,11 @@ public class NavigationViewHelper {
         view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId()==R.id.menu1){
-                    Intent intent=new Intent(context, UserActivity.class);
+                if(item.getItemId()==R.id.menu1) {
+                    Intent intent = new Intent(context, UserActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     context.startActivity(intent);
+
                 }
                 return true;
             }

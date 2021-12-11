@@ -3,6 +3,7 @@ package smu.example.cabling;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +25,10 @@ public class UserActivity extends AppCompatActivity {
 
     TextView tvpoint, tvname;
     ImageButton btpoint;
+    ImageButton home;
     RadioGroup rgpoint;
     RadioButton p1, p2, p3;
+    Intent intent;
 
     SharedPreferences pointp;
 
@@ -38,16 +41,17 @@ public class UserActivity extends AppCompatActivity {
         if(user != null){ username = user.getDisplayName(); }
 
         tvname = (TextView) findViewById(R.id.name);
-        tvname.setText("안녕하세요,\n" + username + " 님");
+        tvname.setText(username);
 
         tvpoint = (TextView) findViewById(R.id.tvpoint);
         btpoint = (ImageButton) findViewById(R.id.pointbutton);
+        home = (ImageButton)  findViewById(R.id.Home);
         rgpoint = (RadioGroup) findViewById(R.id.rgpoint);
         p1 = (RadioButton) findViewById(R.id.p1);
         p2 = (RadioButton) findViewById(R.id.p2);
         p3 = (RadioButton) findViewById(R.id.p3);
 
-        tvpoint.setText("현재 잔여 포인트는 " + Integer.toString(point) + " point 입니다.");
+        tvpoint.setText(username + "님이 보유하신 포인트는 " + Integer.toString(point) + "point 입니다.");
 
         btpoint.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +60,17 @@ public class UserActivity extends AppCompatActivity {
                 else if(p2.isChecked()) point += 500;
                 else if(p3.isChecked()) point += 1000;
 
-                tvpoint.setText("현재 잔여 포인트는 " + Integer.toString(point) + " point 입니다.");
+                tvpoint.setText(username + "님이 보유하신 포인트는 " + Integer.toString(point) + "point 입니다.");
             }
         });
+
+        home.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(UserActivity.this, DrawerActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
