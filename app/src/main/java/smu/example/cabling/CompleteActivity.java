@@ -47,7 +47,7 @@ public class CompleteActivity extends AppCompatActivity {
         sit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CompleteActivity.this, DrawerActivity.class);
+                Intent intent = new Intent(CompleteActivity.this, UserActivity.class);
                 StyleableToast.makeText(CompleteActivity.this, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 startActivity(intent);
                 finish();
@@ -60,7 +60,7 @@ public class CompleteActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CompleteActivity.this, DrawerActivity.class);
+                Intent intent = new Intent(CompleteActivity.this, UserActivity.class);
                 StyleableToast.makeText(CompleteActivity.this, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 startActivity(intent);
                 finish();
