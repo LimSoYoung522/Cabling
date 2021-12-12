@@ -114,7 +114,7 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
                     intent.putExtra("cafe_num", num1);
                     startActivity(intent);
                     overridePendingTransition(R.anim.anim_splash_fadein, R.anim.anim_splash_fadeout);
-                    finish();
+                    //finish();
                 }
             });
             builder.setNegativeButton("아니오", null);
