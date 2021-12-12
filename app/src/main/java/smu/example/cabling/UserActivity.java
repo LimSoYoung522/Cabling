@@ -60,10 +60,13 @@ public class UserActivity extends AppCompatActivity {
     public String filename;
     int num=0;
 
+    public static Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        mContext = this;
 
         iv = (ImageView) findViewById(R.id.imageView);
         tvpoint = (TextView) findViewById(R.id.tvpoint);

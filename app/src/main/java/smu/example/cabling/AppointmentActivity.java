@@ -133,6 +133,7 @@ public class AppointmentActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id){
                                     if(point1 >= 100){
                                         point1 -= 100;
+                                        ((UserActivity)UserActivity.mContext).readUsers(1);
                                         StyleableToast.makeText(AppointmentActivity.this, "결제 후 " + Integer.toString(point1) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                         mDatabase.child("CAFE").child(cafe.concat(String.valueOf(num1))).child("seat").child(String.valueOf(num2)).setValue(1);
                                         Intent complete = new Intent(AppointmentActivity.this, CompleteActivity.class);

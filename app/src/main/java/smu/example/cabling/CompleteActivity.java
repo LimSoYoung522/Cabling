@@ -85,6 +85,7 @@ public class CompleteActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             if(point1 >= 100){
                                 point1 -= 100;
+                                ((UserActivity)UserActivity.mContext).readUsers(1);
                                 StyleableToast.makeText(CompleteActivity.this, "결제 후 " + Integer.toString(point1) + " 포인트가 남았습니다.", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                 time += 10;
                             }

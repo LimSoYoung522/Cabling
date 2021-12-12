@@ -38,6 +38,8 @@ public class DrawerActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
+        //((UserActivity)UserActivity.mContext).readUsers(0);
+
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION }, MODE_PRIVATE);
         ActivityCompat.requestPermissions(this,
